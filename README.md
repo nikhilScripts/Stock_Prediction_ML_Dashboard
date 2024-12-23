@@ -20,17 +20,17 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-## Demo
+
 This project is a Stock Prices Prediction Dashboard that predicts the price of stock for a specific day using machine learning algorithms such as Support Vector Regression (SVR) and Linear Regression. The Flask-based dashboard provides a user interface for stock prediction and data visualization.
 
-Technologies Used
-Python, Flask
-Machine Learning Models: SVR, Linear Regression, Random Forests, KNN, LSTM
-Libraries: Matplotlib, Scikit-learn
-Features
-Predict stock prices using machine learning
-Interactive Flask dashboard for real-time stock predictions
-Visualizes prediction results and model performance
+* Technologies Used
+* Python, Flask
+* Machine Learning Models: SVR, Linear Regression, Random Forests, KNN, LSTM
+* Libraries: Matplotlib, Scikit-learn
+* Features
+* Predict stock prices using machine learning
+I* nteractive Flask dashboard for real-time stock predictions
+* Visualizes prediction results and model performance
 
 ## Code
 
