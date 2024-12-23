@@ -1,3 +1,4 @@
+import tensorflow 
 from sklearn.svm import SVR
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
@@ -6,10 +7,10 @@ from sklearn import tree
 from sklearn import linear_model
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import mean_squared_error
-from keras.models import Sequential
+from tensorflow.keras.models import Sequential
 from sklearn.model_selection import train_test_split
-from keras.layers import Dense
-from keras.layers import LSTM
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import LSTM
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 import numpy
@@ -21,15 +22,16 @@ import os
 # setting a seed for reproducibility
 numpy.random.seed(10)
 # read all stock files in directory indivisual_stocks_5yr
-def read_all_stock_files(folder_path):
+def read_all_stock_files(directory):
     allFiles = []
-    for (_, _, files) in os.walk(folder_path):
+    for (_, _, files) in os.walk(directory):
         allFiles.extend(files)
         break
 
     dataframe_dict = {}
     for stock_file in allFiles:
-        df = pd.read_csv(folder_path + "/" +stock_file)
+        filepath = os.path.join(directory, stock_file)
+        df = pd.read_csv(filepath)
         dataframe_dict[(stock_file.split('_'))[0]] = df
 
     return dataframe_dict
@@ -43,7 +45,7 @@ def create_dataset(dataset, look_back=1):
     return numpy.array(dataX), numpy.array(dataY)
 # create dataset from the dataframe
 def create_preprocessed_Dataset(df):
-    df.drop(df.columns.difference(['date', 'open']), 1, inplace=True)
+    df.drop(df.columns.difference(['date', 'open']), axis = 1, inplace=True)
     df = df['open']
     dataset = df.values
     dataset = dataset.reshape(-1, 1)
